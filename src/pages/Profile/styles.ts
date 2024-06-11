@@ -1,8 +1,11 @@
 const styles = {
   root: {
+    pb: 10,
   },
 
   wrapper: {
+    p: 2,
+
     '>div:not(:last-of-type)': {
       mb: 2,
     },
