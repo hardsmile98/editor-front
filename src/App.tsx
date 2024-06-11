@@ -39,6 +39,7 @@ function App() {
 
   useEffect(() => {
     tg.expand();
+    tg.SettingsButton.hide();
     tg.backgroundColor = '#000000';
     tg.headerColor = '#000000';
   }, [tg]);
