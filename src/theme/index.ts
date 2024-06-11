@@ -67,6 +67,12 @@ const theme = createTheme({
 
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          height: '90vh',
+          overflowX: 'hidden',
+          overflowY: 'auto',
+        },
+
         a: {
           textDecoration: 'none',
           color: 'inherit',
