@@ -74,13 +74,12 @@ const theme = createTheme({
         },
 
         html: {
-          height: 'var(--tg-viewport-stable-height)',
-          overflowX: 'hidden',
+          height: '-webkit-fill-available',
         },
 
         body: {
-          height: 'var(--tg-viewport-stable-height)',
-          overflowX: 'hidden',
+          height: '100vh',
+          minHeight: '-webkit-fill-available',
         },
 
         a: {
