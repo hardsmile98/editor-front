@@ -1,5 +1,5 @@
 const tagTypes = {
-  profile: 'profile'
-}
+  profile: 'profile',
+};
 
-export default tagTypes
+export default tagTypes;

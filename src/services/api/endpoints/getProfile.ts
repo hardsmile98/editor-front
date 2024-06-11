@@ -1,14 +1,14 @@
-import tagTypes from '../tagTypes'
+import tagTypes from '../tagTypes';
 
 const getProfile = {
   query: () => ({
     url: '/api/profle/me',
-    method: 'get'
+    method: 'get',
   }),
 
-  provideTags: [tagTypes.profile]
-}
+  provideTags: [tagTypes.profile],
+};
 
 export {
-  getProfile
-}
+  getProfile,
+};

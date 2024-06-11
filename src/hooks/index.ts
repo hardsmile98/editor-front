@@ -1,5 +1,5 @@
-import useTelegram from './useTelegram'
+import useTelegram from './useTelegram';
 
 export {
-  useTelegram
-}
+  useTelegram,
+};
