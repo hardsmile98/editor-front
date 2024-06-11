@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import {
   Box,
+  Dialog,
+  DialogProps,
   IconButton,
-  Drawer as MuiDrawer,
-  DrawerProps as MuiDrawerProps,
   Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-interface DrawerProps extends MuiDrawerProps {
+interface DrawerProps extends DialogProps {
   title?: string
 }
 
@@ -34,15 +34,13 @@ function Drawer({
   onClose,
   children,
   title,
-  anchor = 'bottom',
   disableScrollLock,
   ...rest
 }: DrawerProps) {
   return (
-    <MuiDrawer
+    <Dialog
       open={open}
       onClose={onClose}
-      anchor={anchor}
       {...rest}
     >
       <Box sx={styles.root}>
@@ -65,7 +63,7 @@ function Drawer({
           {children}
         </Box>
       </Box>
-    </MuiDrawer>
+    </Dialog>
   );
 }
 
