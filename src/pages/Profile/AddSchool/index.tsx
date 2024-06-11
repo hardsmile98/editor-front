@@ -56,7 +56,7 @@ function AddSchool({
 }: AddSchoolProps) {
   return (
     <Drawer
-      anchor="bottom"
+      anchor="left"
       open={isOpen}
       onClose={onClose}
       title="Добавление школы"
