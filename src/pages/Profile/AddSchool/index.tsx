@@ -25,7 +25,6 @@ function AddSchool({
       open={isOpen}
       onClose={onClose}
       title="Добавление школы"
-      ModalProps={{ disableScrollLock: true }}
     >
       <Box sx={styles.form}>
         <div>
