@@ -67,20 +67,6 @@ const theme = createTheme({
 
     MuiCssBaseline: {
       styleOverrides: {
-        '*': {
-          margin: 0,
-          padding: 0,
-          boxSizing: 'border-box',
-        },
-
-        html: {
-          height: '80vh',
-        },
-
-        body: {
-          height: '80vh',
-        },
-
         a: {
           textDecoration: 'none',
           color: 'inherit',
