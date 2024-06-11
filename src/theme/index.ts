@@ -91,12 +91,12 @@ const theme = createTheme({
         },
 
         html: {
-          height: '100vh',
+          height: '100%',
           overflow: 'hidden',
         },
 
         body: {
-          height: '100vh',
+          height: '100%',
           overflowX: 'hidden',
           overflowY: 'auto',
         },
