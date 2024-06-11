@@ -26,11 +26,7 @@ function AddSchool({
       onClose={onClose}
       title="Добавление школы"
     >
-      <Box
-        component="form"
-        onClick={(e) => e.preventDefault()}
-        sx={styles.form}
-      >
+      <Box sx={styles.form}>
         <div>
           <TextField label="API" fullWidth />
 
