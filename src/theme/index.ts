@@ -44,7 +44,7 @@ const theme = createTheme({
 
       styleOverrides: {
         root: {
-          height: 48,
+          height: 56,
           textTransform: 'none',
         },
       },
