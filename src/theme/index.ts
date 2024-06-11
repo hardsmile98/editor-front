@@ -67,6 +67,13 @@ const theme = createTheme({
 
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          maxHeight: 'var(--tg-viewport-stable-height)',
+          minHeight: 'var(--tg-viewport-stable-height)',
+          overflowX: 'hidden',
+          overflowY: 'auto',
+        },
+
         a: {
           textDecoration: 'none',
           color: 'inherit',
