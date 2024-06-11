@@ -16,7 +16,7 @@ function Schools() {
       </Typography>
 
       <Box>
-        <Link to="/">
+        <Link to="/school/1">
           <Paper sx={styles.item}>
             <Box sx={styles.content}>
               <Avatar

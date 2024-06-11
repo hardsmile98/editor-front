@@ -10,6 +10,7 @@ import { useTelegram } from 'hooks';
 import { envs } from 'constants/index';
 import {
   Profile,
+  Shcool,
 } from './pages';
 import { isDev } from './helpers';
 import { useGetProfileQuery } from './services';
@@ -55,7 +56,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/*" element={<Profile />} />
+      <Route path="/" element={<Profile />} />
+      <Route path="/school/:id" element={<Shcool />} />
     </Routes>
   );
 }
