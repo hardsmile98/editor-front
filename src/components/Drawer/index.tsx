@@ -7,7 +7,6 @@ import {
   Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import ReactDOM from 'react-dom';
 
 const styles = {
   root: {
@@ -36,9 +35,10 @@ function Drawer({
   children,
   title,
   anchor = 'bottom',
+  disableScrollLock,
   ...rest
 }: DrawerProps) {
-  return ReactDOM.createPortal(
+  return (
     <MuiDrawer
       open={open}
       onClose={onClose}
@@ -65,8 +65,7 @@ function Drawer({
           {children}
         </Box>
       </Box>
-    </MuiDrawer>,
-    document.body,
+    </MuiDrawer>
   );
 }
 
