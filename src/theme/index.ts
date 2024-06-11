@@ -31,7 +31,7 @@ const theme = createTheme({
   },
 
   shape: {
-    borderRadius: 8,
+    borderRadius: 12,
   },
 
   components: {
@@ -44,7 +44,7 @@ const theme = createTheme({
 
       styleOverrides: {
         root: {
-          height: 56,
+          height: 64,
           textTransform: 'none',
         },
       },
@@ -88,6 +88,17 @@ const theme = createTheme({
             borderRadius: '20px',
             border: '4px solid #5C5C5C',
           },
+        },
+
+        html: {
+          height: '100vh',
+          overflow: 'hidden',
+        },
+
+        body: {
+          height: '100vh',
+          overflowX: 'hidden',
+          overflowY: 'auto',
         },
 
         a: {

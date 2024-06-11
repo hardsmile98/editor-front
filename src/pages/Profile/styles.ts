@@ -1,6 +1,7 @@
 const styles = {
   root: {
     pb: 10,
+    overflowY: 'auto',
   },
 
   wrapper: {

@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import styles from './styles';
 
 function Schools() {
-  const schools = new Array(30).fill(0).map((_, index) => index);
+  const schools = new Array(1).fill(0).map((_, index) => index);
 
   return (
     <>
