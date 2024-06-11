@@ -1,59 +1,50 @@
-import { useState } from 'react';
 import {
   Box,
   Button,
   IconButton,
 } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { Link } from 'react-router-dom';
 import Information from './Information';
-import styles from './styles';
 import Schools from './Schools';
-import AddSchool from './AddSchool';
+import styles from './styles';
 
 function Profile() {
-  const [isAddSchool, setAddSchool] = useState(false);
-
   return (
-    <>
-      <Box sx={styles.root}>
-        <Box sx={styles.wrapper}>
-          <div>
-            <Information
-              avatarUrl=""
-              name="Kirill"
-              telegramUrl="/"
-            />
-          </div>
+    <Box sx={styles.root}>
+      <Box sx={styles.wrapper}>
+        <div>
+          <Information
+            avatarUrl=""
+            name="Kirill"
+            telegramUrl="/"
+          />
+        </div>
 
-          <div>
-            <IconButton
-              onClick={() => setAddSchool(true)}
-              sx={styles.add}
-            >
-              <AddCircleIcon />
-            </IconButton>
-          </div>
+        <div>
+          <IconButton
+            component={Link}
+            to="addSchool"
+            sx={styles.add}
+          >
+            <AddCircleIcon />
+          </IconButton>
+        </div>
 
-          <div>
-            <Schools />
-          </div>
-        </Box>
-
-        <Box
-          onClick={() => setAddSchool(true)}
-          sx={styles.navigation}
-        >
-          <Button>
-            Создать онлайн-школу
-          </Button>
-        </Box>
+        <div>
+          <Schools />
+        </div>
       </Box>
 
-      <AddSchool
-        onClose={() => setAddSchool(false)}
-        isOpen={isAddSchool}
-      />
-    </>
+      <Box sx={styles.navigation}>
+        <Button
+          component={Link}
+          to="addSchool"
+        >
+          Создать онлайн-школу
+        </Button>
+      </Box>
+    </Box>
   );
 }
 

@@ -1,5 +1,5 @@
-import Drawer from './Drawer';
+import Dialog from './Dialog';
 
 export {
-  Drawer,
+  Dialog,
 };
