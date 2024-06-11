@@ -2,7 +2,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontSize: 12,
+    fontSize: 14,
     fontFamily: '"SFProText", "Roboto", "Helvetica", "Arial", sans-serif;',
 
     h1: {
@@ -88,17 +88,6 @@ const theme = createTheme({
             borderRadius: '20px',
             border: '4px solid #5C5C5C',
           },
-        },
-
-        html: {
-          height: '100vh',
-          overflow: 'hidden',
-        },
-
-        body: {
-          height: '100vh',
-          overflowX: 'hidden',
-          overflowY: 'auto',
         },
 
         a: {
