@@ -2,7 +2,6 @@ import { LoadingButton } from '@mui/lab';
 import {
   Box,
   Paper,
-  TextField,
 } from '@mui/material';
 import CodeIcon from '@mui/icons-material/Code';
 import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -32,7 +31,9 @@ function AddSchool({
         sx={styles.form}
       >
         <div>
-          <TextField label="API" fullWidth />
+          <div>
+            <input placeholder="Api" />
+          </div>
 
           <Paper sx={styles.instruction}>
             <Link to="/">
@@ -50,9 +51,13 @@ function AddSchool({
           </Paper>
         </div>
 
-        <TextField label="Название школы" fullWidth />
+        <div>
+          <input placeholder="Название школы" />
+        </div>
 
-        <TextField label="Направление" fullWidth />
+        <div>
+          <input placeholder="Направление" />
+        </div>
 
         <LoadingButton variant="contained">
           Создать
