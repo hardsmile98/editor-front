@@ -37,6 +37,7 @@ const theme = createTheme({
   components: {
     MuiButton: {
       defaultProps: {
+        disableElevation: true,
         variant: 'contained',
         fullWidth: true,
       },
@@ -84,7 +85,7 @@ const theme = createTheme({
     mode: 'dark',
 
     background: {
-      paper: '#1e1e1f',
+      paper: '#1c1c1d',
       default: '#000000',
       secondary: '#5C5C5C',
     },
