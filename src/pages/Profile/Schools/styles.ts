@@ -1,4 +1,14 @@
 const styles = {
+  list: {
+    '> a': {
+      display: 'block',
+    },
+
+    '> a:not(:last-of-type)': {
+      mb: 1,
+    },
+  },
+
   item: {
     p: 1.5,
     display: 'flex',

@@ -20,7 +20,7 @@ function Schools() {
         Ваши онлайн-школы
       </Typography>
 
-      <Box>
+      <Box sx={styles.list}>
         {schools.map((school) => (
           <Link key={school} to="/school/1">
             <Paper sx={styles.item}>
