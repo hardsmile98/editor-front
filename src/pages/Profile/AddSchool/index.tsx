@@ -60,6 +60,7 @@ function AddSchool({
       open={isOpen}
       onClose={onClose}
       title="Добавление школы"
+      disableRestoreFocus
     >
       <Box
         component="form"
