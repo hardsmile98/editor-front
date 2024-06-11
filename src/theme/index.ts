@@ -79,7 +79,7 @@ const theme = createTheme({
         },
 
         body: {
-          height: '100vh',
+          height: '100%',
           overflowX: 'hidden',
           overflowY: 'auto',
         },
