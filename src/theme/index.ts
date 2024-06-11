@@ -67,6 +67,10 @@ const theme = createTheme({
 
     MuiCssBaseline: {
       styleOverrides: {
+        html: {
+          backgroundColor: 'red',
+        },
+
         a: {
           textDecoration: 'none',
           color: 'inherit',
