@@ -33,7 +33,6 @@ function Information({
 
       <IconButton
         size="large"
-        disableRipple
         sx={styles.tgLink}
         LinkComponent={Link}
         href={telegramUrl}
