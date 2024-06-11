@@ -71,6 +71,23 @@ const theme = createTheme({
           margin: 0,
           padding: 0,
           boxSizing: 'border-box',
+
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#5C5C5C #000',
+
+          '&::-webkit-scrollbar': {
+            width: '6px',
+          },
+
+          '&::-webkit-scrollbar-track': {
+            background: '#000',
+          },
+
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: 'blue',
+            borderRadius: '20px',
+            border: '4px solid #5C5C5C',
+          },
         },
 
         html: {
