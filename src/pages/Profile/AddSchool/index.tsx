@@ -25,7 +25,6 @@ function AddSchool({
       open={isOpen}
       onClose={onClose}
       title="Добавление школы"
-      disableScrollLock
     >
       <Box sx={styles.form}>
         <div>
