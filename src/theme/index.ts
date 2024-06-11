@@ -74,11 +74,11 @@ const theme = createTheme({
         },
 
         html: {
-          height: '100vh',
+          height: '80vh',
         },
 
         body: {
-          height: '100vh',
+          height: '80vh',
         },
 
         a: {

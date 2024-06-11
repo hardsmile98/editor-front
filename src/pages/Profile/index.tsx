@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Box,
-  Button,
+  // Button,
   IconButton,
 } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -39,14 +39,14 @@ function Profile() {
           </div>
         </Box>
 
-        <Box
+        {/* <Box
           onClick={() => setAddSchool(true)}
           sx={styles.navigation}
         >
           <Button>
             Создать онлайн-школу
           </Button>
-        </Box>
+        </Box> */}
       </Box>
 
       <AddSchool
