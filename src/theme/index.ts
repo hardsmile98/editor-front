@@ -57,6 +57,10 @@ const theme = createTheme({
     },
 
     MuiDrawer: {
+      defaultProps: {
+        disableEnforceFocus: true,
+      },
+
       styleOverrides: {
         paperAnchorBottom: {
           borderTopRightRadius: 16,
