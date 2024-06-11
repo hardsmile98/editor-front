@@ -74,12 +74,14 @@ const theme = createTheme({
         },
 
         html: {
-          height: '-webkit-fill-available',
+          height: '100vh',
+          overflow: 'hidden',
         },
 
         body: {
           height: '100vh',
-          minHeight: '-webkit-fill-available',
+          overflowX: 'hidden',
+          overflowY: 'auto',
         },
 
         a: {
