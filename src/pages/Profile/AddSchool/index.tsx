@@ -27,7 +27,7 @@ function AddSchool({
     >
       <Box sx={styles.form}>
         <div>
-          <TextField label="API" fullWidth />
+          <TextField autoFocus label="API" fullWidth />
 
           <Paper sx={styles.instruction}>
             <Link to="/">
