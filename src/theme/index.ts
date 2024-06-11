@@ -73,6 +73,14 @@ const theme = createTheme({
           boxSizing: 'border-box',
         },
 
+        html: {
+          height: '100vh',
+        },
+
+        body: {
+          height: '100vh',
+        },
+
         a: {
           textDecoration: 'none',
           color: 'inherit',
