@@ -41,6 +41,7 @@ function Drawer({
     <Dialog
       open={open}
       onClose={onClose}
+      disableEnforceFocus
       {...rest}
     >
       <Box sx={styles.root}>
