@@ -1,6 +1,6 @@
 const styles = {
   root: {
-    pb: 8,
+    pb: 10,
   },
 
   wrapper: {
