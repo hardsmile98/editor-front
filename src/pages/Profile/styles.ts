@@ -4,7 +4,7 @@ const styles = {
   },
 
   wrapper: {
-    p: 2,
+    p: 3,
 
     '>div:not(:last-of-type)': {
       mb: 2,
@@ -17,7 +17,7 @@ const styles = {
     bottom: 0,
     left: 0,
     right: 0,
-    p: 2,
+    p: 3,
   },
 
   head: {

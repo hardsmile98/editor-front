@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 
 const styles = {
   root: {
-    p: 2,
+    p: 3,
   },
 
   head: {
