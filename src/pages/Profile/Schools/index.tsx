@@ -13,10 +13,7 @@ function Schools() {
 
   return (
     <>
-      <Typography
-        gutterBottom
-        fontWeight="fontWeightMedium"
-      >
+      <Typography gutterBottom variant="h6">
         Ваши онлайн-школы
       </Typography>
 
