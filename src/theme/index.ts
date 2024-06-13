@@ -144,7 +144,7 @@ const theme = createTheme({
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: colors.bgPaper,
+          backgroundColor: colors.bgSecondary,
         },
       },
     },
