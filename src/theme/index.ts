@@ -1,5 +1,12 @@
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
+const colors = {
+  bgPaper: '#262626',
+  bgDefault: '#000000',
+  bgSecondary: '#5C5C5C',
+  primaryMain: '#2990FF',
+};
+
 const theme = createTheme({
   typography: {
     fontSize: 14,
@@ -73,20 +80,20 @@ const theme = createTheme({
           boxSizing: 'border-box',
 
           scrollbarWidth: 'thin',
-          scrollbarColor: '#5C5C5C #000',
+          scrollbarColor: `${colors.bgSecondary} ${colors.bgDefault}`,
 
           '&::-webkit-scrollbar': {
             width: '6px',
           },
 
           '&::-webkit-scrollbar-track': {
-            background: '#000',
+            background: colors.bgDefault,
           },
 
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'blue',
             borderRadius: '20px',
-            border: '4px solid #5C5C5C',
+            border: `4px solid ${colors.bgSecondary}`,
           },
         },
 
@@ -112,6 +119,25 @@ const theme = createTheme({
       defaultProps: {
         disableRipple: true,
       },
+
+      variants: [
+        {
+          props: {
+            color: 'default',
+          },
+          style: {
+            backgroundColor: colors.bgPaper,
+          },
+        },
+      ],
+    },
+
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          backgroundColor: colors.bgPaper,
+        },
+      },
     },
   },
 
@@ -119,13 +145,13 @@ const theme = createTheme({
     mode: 'dark',
 
     background: {
-      paper: '#1c1c1d',
-      default: '#000000',
-      secondary: '#5C5C5C',
+      paper: colors.bgPaper,
+      default: colors.bgDefault,
+      secondary: colors.bgSecondary,
     },
 
     primary: {
-      main: '#2990FF',
+      main: colors.primaryMain,
     },
   },
 });

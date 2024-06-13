@@ -13,6 +13,7 @@ import {
   AddSchool,
   Profile,
   Shcool,
+  SchoolMenu,
 } from './pages';
 import { isDev } from './helpers';
 import { useGetProfileQuery } from './services';
@@ -62,6 +63,7 @@ function App() {
       <Route path="/addSchool" element={<AddSchool />} />
       <Route path="/school/:id" element={<Shcool />} />
       <Route path="/school/:id/addModules" element={<AddModules />} />
+      <Route path="/school/:id/menu" element={<SchoolMenu />} />
     </Routes>
   );
 }

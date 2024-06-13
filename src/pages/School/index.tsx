@@ -4,7 +4,7 @@ import {
   Tooltip,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { getLS, setLS } from 'helpers/index';
+import { setLS, getLS } from 'helpers/index';
 import MenuIcon from '@mui/icons-material/Menu';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './styles';

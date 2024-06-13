@@ -31,7 +31,6 @@ const styles = {
     width: '100%',
     height: 240,
     borderRadius: 1,
-    backgroundColor: 'background.paper',
 
     svg: {
       width: 50,

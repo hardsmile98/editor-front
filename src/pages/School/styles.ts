@@ -37,7 +37,6 @@ const styles = {
     width: 68,
     height: 68,
     borderRadius: 1,
-    backgroundColor: 'background.paper',
     color: 'text.secondary',
 
     svg: {
