@@ -19,6 +19,20 @@ const styles = {
     justifyContent: 'space-between',
   },
 
+  popover: {
+    maxWidth: 240,
+  },
+
+  tooltip: {
+    p: 1,
+    fontSize: 'body2.fontSize',
+
+    span: {
+      color: 'text.secondary',
+      fontWeight: 'fontWeightRegular',
+    },
+  },
+
   menuItem: {
     width: 68,
     height: 68,

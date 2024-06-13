@@ -9,6 +9,7 @@ import {
 import { useTelegram } from 'hooks';
 import { envs } from 'constants/index';
 import {
+  AddModules,
   AddSchool,
   Profile,
   Shcool,
@@ -58,8 +59,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Profile />} />
-      <Route path="/school/:id" element={<Shcool />} />
       <Route path="/addSchool" element={<AddSchool />} />
+      <Route path="/school/:id" element={<Shcool />} />
+      <Route path="/school/:id/addModules" element={<AddModules />} />
     </Routes>
   );
 }
