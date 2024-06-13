@@ -17,6 +17,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    zIndex: 100,
   },
 
   popover: {

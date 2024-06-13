@@ -14,6 +14,7 @@ const styles = {
     left: 0,
     right: 0,
     p: 3,
+    zIndex: 100,
   },
 
   instruction: {
@@ -41,7 +42,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'background.secondary',
   },
 
   form: {

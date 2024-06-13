@@ -18,6 +18,7 @@ const styles = {
     left: 0,
     right: 0,
     p: 3,
+    zIndex: 100,
   },
 
   head: {

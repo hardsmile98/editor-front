@@ -3,7 +3,7 @@ import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 const colors = {
   bgPaper: '#262626',
   bgDefault: '#000000',
-  bgSecondary: '#5C5C5C',
+  bgSecondary: '#121213',
   primaryMain: '#2990FF',
 };
 
@@ -130,6 +130,15 @@ const theme = createTheme({
           },
         },
       ],
+    },
+
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.bgSecondary,
+          borderRadius: 12,
+        },
+      },
     },
 
     MuiTooltip: {
