@@ -141,6 +141,15 @@ const theme = createTheme({
       },
     },
 
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.bgSecondary,
+          borderRadius: 12,
+        },
+      },
+    },
+
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
