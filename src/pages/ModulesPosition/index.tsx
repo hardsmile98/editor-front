@@ -37,6 +37,7 @@ function ModulesPosition() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    tg.BackButton.offClick(() => navigate(-1));
     tg.BackButton.onClick(() => navigate(`/school/${id}`));
   }, [tg, navigate]);
 
