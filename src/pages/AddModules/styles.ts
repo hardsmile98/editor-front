@@ -23,6 +23,7 @@ const styles = {
   },
 
   addIcon: {
+    flexShrink: 0,
     width: 40,
     height: 40,
     borderRadius: 1,

@@ -7,3 +7,20 @@ declare module '@mui/material/styles/createPalette' {
     secondary: string
   }
 }
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    delete: {
+      main: string
+      secondary: string
+      dark: string
+    };
+  }
+  interface PaletteOptions {
+    delete: {
+      main: string
+      secondary: string
+      dark: string
+    };
+  }
+}

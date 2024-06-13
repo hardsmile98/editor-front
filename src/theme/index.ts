@@ -142,6 +142,9 @@ const theme = createTheme({
     },
 
     MuiMenuItem: {
+      defaultProps: {
+        disableRipple: true,
+      },
       styleOverrides: {
         root: {
           backgroundColor: colors.bgSecondary,
@@ -170,6 +173,12 @@ const theme = createTheme({
 
     primary: {
       main: colors.primaryMain,
+    },
+
+    delete: {
+      main: '#FF4444',
+      secondary: '#482626',
+      dark: '#f32a2a',
     },
   },
 });
