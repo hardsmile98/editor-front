@@ -2,6 +2,7 @@ import {
   Box,
   Paper,
   TextField,
+  Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import CodeIcon from '@mui/icons-material/Code';
@@ -14,6 +15,10 @@ function AddSchool() {
     <Box sx={styles.root}>
       <Box sx={styles.wrapper}>
         <Box sx={styles.form}>
+          <Typography gutterBottom variant="h6">
+            Создание школы
+          </Typography>
+
           <div>
             <TextField label="API" fullWidth />
 
