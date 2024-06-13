@@ -1,15 +1,35 @@
 import {
   Box,
   IconButton,
+  List,
+  ListItem,
   Tooltip,
+  Typography,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { setLS, getLS } from 'helpers/index';
 import MenuIcon from '@mui/icons-material/Menu';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './styles';
 
 const TOOLTIP_LS_KEY = 'tooltip_add_modules';
+
+const modules = [
+  {
+    id: 1,
+    title: 'Баннер',
+  },
+  {
+    id: 2,
+    title: 'Модули',
+  },
+  {
+    id: 3,
+    title: 'Статистика ученика',
+  },
+];
 
 function School() {
   const isTooltipVisible = !getLS(TOOLTIP_LS_KEY);
@@ -18,9 +38,23 @@ function School() {
 
   return (
     <Box sx={styles.root}>
-      <Box sx={styles.wrapper}>
-        modules
-      </Box>
+      <List sx={styles.modules}>
+        {modules.map((module) => (
+          <ListItem sx={styles.module} key={module.id}>
+            <Box sx={styles.moduleWrapper}>
+              <Box sx={styles.moduleIcon}>
+                <AddIcon />
+              </Box>
+
+              <Typography>
+                {module.title}
+              </Typography>
+            </Box>
+
+            <ArrowRightIcon sx={styles.arrow} />
+          </ListItem>
+        ))}
+      </List>
 
       <Box sx={styles.navigation}>
         <IconButton
@@ -29,6 +63,12 @@ function School() {
           sx={styles.menuItem}
         >
           <MenuIcon />
+        </IconButton>
+
+        <IconButton
+          sx={styles.menuItem}
+        >
+          <FullscreenIcon />
         </IconButton>
 
         <Tooltip

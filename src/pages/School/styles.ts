@@ -3,10 +3,6 @@ const styles = {
     pb: 14,
   },
 
-  wrapper: {
-    p: 3,
-  },
-
   navigation: {
     position: 'fixed',
     backgroundColor: 'background.default',
@@ -50,6 +46,44 @@ const styles = {
       color: 'primary.main',
       borderColor: 'primary.main',
     },
+  },
+
+  modules: {
+    p: 3,
+
+    '> li:not(:last-of-type)': {
+      mb: 1,
+    },
+  },
+
+  module: {
+    p: 2,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 1,
+    cursor: 'pointer',
+  },
+
+  moduleWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 2,
+  },
+
+  moduleIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'common.white',
+    backgroundColor: 'primary.main',
+  },
+
+  arrow: {
+    color: 'text.secondary',
   },
 };
 
