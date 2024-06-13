@@ -38,7 +38,7 @@ function ModulesPosition() {
 
   useEffect(() => {
     tg.BackButton.onClick(() => navigate(`/school/${id}`));
-  }, [tg]);
+  }, [tg, navigate]);
 
   return (
     <Box sx={styles.root}>
