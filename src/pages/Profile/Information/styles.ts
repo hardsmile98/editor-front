@@ -22,7 +22,6 @@ const styles = {
     width: 56,
     height: 56,
     borderRadius: 1,
-    backgroundColor: 'background.paper',
   },
 };
 

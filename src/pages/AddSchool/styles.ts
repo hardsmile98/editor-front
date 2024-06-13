@@ -18,6 +18,7 @@ const styles = {
   },
 
   instruction: {
+    backgroundColor: 'background.secondary',
     mt: 1,
     p: 1.5,
   },
@@ -42,6 +43,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'background.paper',
   },
 
   form: {

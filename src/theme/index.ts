@@ -126,7 +126,7 @@ const theme = createTheme({
             color: 'default',
           },
           style: {
-            backgroundColor: colors.bgPaper,
+            backgroundColor: colors.bgSecondary,
           },
         },
       ],
