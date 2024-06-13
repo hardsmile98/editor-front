@@ -118,6 +118,7 @@ const theme = createTheme({
     MuiIconButton: {
       defaultProps: {
         disableRipple: true,
+        disableTouchRipple: true,
       },
 
       variants: [
@@ -144,6 +145,7 @@ const theme = createTheme({
     MuiMenuItem: {
       defaultProps: {
         disableRipple: true,
+        disableTouchRipple: true,
       },
       styleOverrides: {
         root: {
