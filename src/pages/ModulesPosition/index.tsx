@@ -32,6 +32,7 @@ function ModulesPosition() {
   const tg = useTelegram();
 
   useEffect(() => {
+    // eslint-disable-next-line no-alert
     tg.BackButton.onClick(() => alert('back'));
   }, [tg]);
 
