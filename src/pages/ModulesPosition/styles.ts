@@ -72,11 +72,11 @@ const styles = {
     width: 40,
     height: 40,
     color: 'text.secondary',
-    backgroundColor: 'background.paper',
+    backgroundColor: 'background.secondary',
 
     ':hover': {
       color: 'text.primary',
-      backgroundColor: 'background.paper',
+      backgroundColor: 'background.secondary',
     },
   },
 

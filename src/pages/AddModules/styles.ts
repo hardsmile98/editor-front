@@ -30,7 +30,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'background.paper',
     color: 'primary.main',
   },
 

@@ -127,10 +127,10 @@ const theme = createTheme({
           },
           style: {
             borderRadius: 12,
-            backgroundColor: colors.bgSecondary,
+            backgroundColor: colors.bgPaper,
 
             ':hover': {
-              backgroundColor: colors.bgSecondary,
+              backgroundColor: colors.bgPaper,
             },
           },
         },
@@ -140,7 +140,7 @@ const theme = createTheme({
     MuiListItem: {
       styleOverrides: {
         root: {
-          backgroundColor: colors.bgSecondary,
+          backgroundColor: colors.bgPaper,
           borderRadius: 12,
         },
       },
@@ -153,10 +153,10 @@ const theme = createTheme({
 
       styleOverrides: {
         root: {
-          backgroundColor: colors.bgSecondary,
+          backgroundColor: colors.bgPaper,
           borderRadius: 12,
           ':hover': {
-            backgroundColor: colors.bgSecondary,
+            backgroundColor: colors.bgPaper,
           },
         },
       },
@@ -165,7 +165,7 @@ const theme = createTheme({
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: colors.bgSecondary,
+          backgroundColor: colors.bgPaper,
         },
       },
     },
