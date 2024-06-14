@@ -71,12 +71,12 @@ const styles = {
     flexShrink: 0,
     width: 40,
     height: 40,
-    borderRadius: 1,
     color: 'text.secondary',
     backgroundColor: 'background.paper',
 
     ':hover': {
       color: 'text.primary',
+      backgroundColor: 'background.paper',
     },
   },
 
@@ -86,6 +86,7 @@ const styles = {
 
     ':hover': {
       color: 'delete.dark',
+      backgroundColor: 'delete.secondary',
     },
   },
 };

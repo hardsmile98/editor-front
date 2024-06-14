@@ -126,7 +126,12 @@ const theme = createTheme({
             color: 'default',
           },
           style: {
+            borderRadius: 12,
             backgroundColor: colors.bgSecondary,
+
+            ':hover': {
+              backgroundColor: colors.bgSecondary,
+            },
           },
         },
       ],
@@ -142,10 +147,17 @@ const theme = createTheme({
     },
 
     MuiMenuItem: {
+      defaultProps: {
+        disableRipple: true,
+      },
+
       styleOverrides: {
         root: {
           backgroundColor: colors.bgSecondary,
           borderRadius: 12,
+          ':hover': {
+            backgroundColor: colors.bgSecondary,
+          },
         },
       },
     },
