@@ -6,6 +6,9 @@ import UpIcon from '@mui/icons-material/North';
 import DownIcon from '@mui/icons-material/South';
 import CloseIcon from '@mui/icons-material/Close';
 import { LoadingButton } from '@mui/lab';
+import { useEffect, useRef } from 'react';
+import { useTelegram } from 'hooks';
+import { useNavigate } from 'react-router';
 import styles from './styles';
 
 const modules = [
@@ -27,6 +30,21 @@ const modules = [
 ];
 
 function ModulesPosition() {
+  const tg = useTelegram();
+
+  const navigate = useRef(useNavigate());
+
+  const backToMenu = () => navigate.current('/shcool/1');
+
+  useEffect(() => {
+    tg.BackButton.offClick(() => navigate.current(-1));
+    tg.BackButton.onClick(backToMenu);
+
+    return () => {
+      tg.BackButton.offClick(backToMenu);
+    };
+  }, [tg]);
+
   return (
     <Box sx={styles.root}>
       <Box sx={styles.wrapper}>
