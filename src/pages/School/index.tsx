@@ -9,7 +9,6 @@ import {
 import { Link } from 'react-router-dom';
 import { setLS, getLS } from 'helpers/index';
 import MenuIcon from '@mui/icons-material/Menu';
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './styles';
@@ -40,7 +39,12 @@ function School() {
     <Box sx={styles.root}>
       <List sx={styles.modules}>
         {modules.map((module) => (
-          <ListItem sx={styles.module} key={module.id}>
+          <ListItem
+            component={Link}
+            to={`edit/${module.id}`}
+            sx={styles.module}
+            key={module.id}
+          >
             <Box sx={styles.moduleWrapper}>
               <Box sx={styles.moduleIcon}>
                 <AddIcon />
@@ -63,12 +67,6 @@ function School() {
           sx={styles.menuItem}
         >
           <MenuIcon />
-        </IconButton>
-
-        <IconButton
-          sx={styles.menuItem}
-        >
-          <FullscreenIcon />
         </IconButton>
 
         <Tooltip

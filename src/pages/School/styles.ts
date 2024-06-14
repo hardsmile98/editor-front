@@ -51,7 +51,7 @@ const styles = {
   modules: {
     p: 3,
 
-    '> li:not(:last-of-type)': {
+    '> a:not(:last-of-type)': {
       mb: 1,
     },
   },

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Box, IconButton, List, ListItem, Typography,
 } from '@mui/material';
@@ -8,7 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { LoadingButton } from '@mui/lab';
 import styles from './styles';
 
-const modules = [
+const modulesData = [
   {
     id: 1,
     index: 0,
@@ -22,11 +23,43 @@ const modules = [
   {
     id: 3,
     index: 2,
-    title: 'Статистика ученика Статистика ученика Статистика ученика',
+    title: 'Статистика ученика',
   },
 ];
 
 function ModulesPosition() {
+  const [modules, setModules] = useState<typeof modulesData>([]);
+
+  useEffect(() => {
+    setModules(modulesData);
+  }, [modulesData]);
+
+  const deleteModule = (id: number) => {
+    setModules((prev) => prev.filter((module) => module.id !== id));
+  };
+
+  const upModule = (index: number) => {
+    setModules((prev) => {
+      const copy = [...prev];
+
+      copy[index - 1] = prev[index];
+      copy[index] = prev[index - 1];
+
+      return copy;
+    });
+  };
+
+  const downModule = (index: number) => {
+    setModules((prev) => {
+      const copy = [...prev];
+
+      copy[index + 1] = prev[index];
+      copy[index] = prev[index + 1];
+
+      return copy;
+    });
+  };
+
   return (
     <Box sx={styles.root}>
       <Box sx={styles.wrapper}>
@@ -35,7 +68,7 @@ function ModulesPosition() {
         </Typography>
 
         <List sx={styles.modules}>
-          {modules.map((module) => (
+          {modules.map((module, index) => (
             <ListItem sx={styles.module} key={module.id}>
               <Box sx={styles.moduleWrapper}>
                 <Box sx={styles.moduleIcon}>
@@ -48,15 +81,26 @@ function ModulesPosition() {
               </Box>
 
               <Box sx={styles.buttons}>
-                <IconButton sx={styles.button}>
+                <IconButton
+                  sx={styles.button}
+                  disabled={index === modules.length - 1}
+                  onClick={() => downModule(index)}
+                >
                   <DownIcon />
                 </IconButton>
 
-                <IconButton sx={styles.button}>
+                <IconButton
+                  disabled={index === 0}
+                  sx={styles.button}
+                  onClick={() => upModule(index)}
+                >
                   <UpIcon />
                 </IconButton>
 
-                <IconButton sx={{ ...styles.button, ...styles.delete }}>
+                <IconButton
+                  onClick={() => deleteModule(module.id)}
+                  sx={{ ...styles.button, ...styles.delete }}
+                >
                   <CloseIcon />
                 </IconButton>
               </Box>
