@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   Route,
   Routes,
@@ -22,7 +22,7 @@ import { useGetProfileQuery } from './services';
 function App() {
   const tg = useTelegram();
 
-  const navigate = useNavigate();
+  const navigate = useRef(useNavigate());
   const { pathname } = useLocation();
 
   const [isTgLoading, setTgLoading] = useState(true);
@@ -52,11 +52,11 @@ function App() {
   useEffect(() => {
     if (pathname !== '/') {
       tg.BackButton.show();
-      tg.BackButton.onClick(() => navigate(-1));
+      tg.BackButton.onClick(() => navigate.current(-1));
     } else {
       tg.BackButton.hide();
     }
-  }, [tg, navigate, pathname]);
+  }, [tg, pathname]);
 
   return (
     <Routes>

@@ -34,14 +34,8 @@ function ModulesPosition() {
 
   const navigate = useRef(useNavigate());
 
-  const backToMenu = () => navigate.current('/shcool/1');
-
   useEffect(() => {
-    tg.BackButton.onClick(backToMenu);
-
-    return () => {
-      tg.BackButton.offClick(backToMenu);
-    };
+    tg.BackButton.onClick(() => navigate.current('/shcool/1'));
   }, [tg]);
 
   return (
