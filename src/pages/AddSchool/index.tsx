@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import {
   Box,
   Paper,
   TextField,
   Typography,
 } from '@mui/material';
+import { useAddSchoolMutation } from 'services/api';
 import { Link } from 'react-router-dom';
 import CodeIcon from '@mui/icons-material/Code';
 import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -11,6 +13,22 @@ import { LoadingButton } from '@mui/lab';
 import styles from './styles';
 
 function AddSchool() {
+  const [newSchoolData, setNewSchoolData] = useState({
+    token: '',
+    title: '',
+    direction: '',
+  });
+
+  const isDisabled = !newSchoolData.token
+    || !newSchoolData.title
+    || !newSchoolData.direction;
+
+  const onChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setNewSchoolData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const [addSchool, { isLoading }] = useAddSchoolMutation();
+
   return (
     <Box sx={styles.root}>
       <Box sx={styles.wrapper}>
@@ -20,7 +38,13 @@ function AddSchool() {
           </Typography>
 
           <div>
-            <TextField label="API" fullWidth />
+            <TextField
+              value={newSchoolData.token}
+              onChange={onChange}
+              name="token"
+              label="API"
+              fullWidth
+            />
 
             <Paper sx={styles.instruction}>
               <Link to="/">
@@ -38,14 +62,31 @@ function AddSchool() {
             </Paper>
           </div>
 
-          <TextField label="Название школы" fullWidth />
+          <TextField
+            value={newSchoolData.title}
+            onChange={onChange}
+            name="title"
+            label="Название школы"
+            fullWidth
+          />
 
-          <TextField label="Направление" fullWidth />
+          <TextField
+            value={newSchoolData.direction}
+            onChange={onChange}
+            name="direction"
+            label="Направление"
+            fullWidth
+          />
         </Box>
       </Box>
 
       <Box sx={styles.navigation}>
-        <LoadingButton variant="contained">
+        <LoadingButton
+          disabled={isDisabled}
+          loading={isLoading}
+          variant="contained"
+          onClick={() => addSchool(newSchoolData)}
+        >
           Создать
         </LoadingButton>
       </Box>

@@ -21,6 +21,8 @@ export const publicApi = createApi({
 
   endpoints: (builder) => ({
     getProfile: builder.query<endpoints.ProfileResponse, undefined>(endpoints.getProfile),
+    getSchools: builder.query<endpoints.SchoolsResponse, undefined>(endpoints.getSchools),
+    addSchool: builder.mutation(endpoints.addSchool),
   }),
 
   tagTypes: Object.values(tagTypes),
@@ -28,6 +30,8 @@ export const publicApi = createApi({
 
 export const {
   useGetProfileQuery,
+  useGetSchoolsQuery,
+  useAddSchoolMutation,
 } = publicApi;
 
 export function isErrorWithMessage(
