@@ -1,8 +1,20 @@
 import tagTypes from '../tagTypes';
 
+interface ProfileResponse {
+  success: boolean
+  user: {
+    userId: number
+    name: string
+    username: string
+    limitShop: number
+    createdAt: string
+    updatedAt: string
+  }
+}
+
 const getProfile = {
   query: () => ({
-    url: '/api/profle/me',
+    url: '/api/users/owner',
     method: 'get',
   }),
 
@@ -11,4 +23,5 @@ const getProfile = {
 
 export {
   getProfile,
+  type ProfileResponse,
 };

@@ -20,7 +20,7 @@ export const publicApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    getProfile: builder.query(endpoints.getProfile),
+    getProfile: builder.query<endpoints.ProfileResponse, undefined>(endpoints.getProfile),
   }),
 
   tagTypes: Object.values(tagTypes),

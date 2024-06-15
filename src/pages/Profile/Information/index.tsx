@@ -2,20 +2,24 @@ import {
   Avatar, Box, IconButton, Typography,
 } from '@mui/material';
 import TelegramIcon from '@mui/icons-material/Telegram';
-import { Link } from 'react-router-dom';
+import { useTelegram } from 'hooks';
 import styles from './styles';
 
 interface InformationProps {
-  avatarUrl: string
-  name: string
-  telegramUrl: string
+  avatarUrl: string | undefined
+  name: string | undefined
+  tgChannelUrl: string
 }
 
 function Information({
   avatarUrl,
   name,
-  telegramUrl,
+  tgChannelUrl,
 }: InformationProps) {
+  const tg = useTelegram();
+
+  const onClickLink = () => tg.openLink(tgChannelUrl);
+
   return (
     <Box sx={styles.head}>
       <Box sx={styles.profileInfo}>
@@ -34,8 +38,7 @@ function Information({
       <IconButton
         size="large"
         sx={styles.tgLink}
-        LinkComponent={Link}
-        href={telegramUrl}
+        onClick={onClickLink}
       >
         <TelegramIcon />
       </IconButton>

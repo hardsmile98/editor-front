@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useRef, useState } from 'react';
 import {
   Route,
@@ -8,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { useTelegram } from 'hooks';
 import { envs } from 'constants/index';
+import { ErrorPage, LoaderPage } from 'components';
 import {
   AddModules,
   AddSchool,
@@ -31,7 +31,7 @@ function App() {
 
   const {
     isLoading: isGetProfileLoading,
-    isError,
+    isError: isGetProfileError,
   } = useGetProfileQuery(undefined, { skip: !isTgReady });
 
   const isLoading = isTgLoading || isGetProfileLoading;
@@ -58,6 +58,14 @@ function App() {
       tg.BackButton.hide();
     }
   }, [tg, pathname]);
+
+  if (isLoading) {
+    return <LoaderPage />;
+  }
+
+  if (isGetProfileError) {
+    return <ErrorPage />;
+  }
 
   return (
     <Routes>
