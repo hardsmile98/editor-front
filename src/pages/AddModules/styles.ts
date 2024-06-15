@@ -31,6 +31,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     color: 'primary.main',
+    backgroundColor: 'background.secondary',
   },
 
   iconSelected: {
