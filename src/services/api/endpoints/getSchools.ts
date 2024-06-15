@@ -17,7 +17,7 @@ const getSchools = {
     url: '/api/schools',
   }),
 
-  provideTags: [tagTypes.schools],
+  providesTags: [tagTypes.schools],
 };
 
 export {

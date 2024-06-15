@@ -18,7 +18,7 @@ const getProfile = {
     method: 'get',
   }),
 
-  provideTags: [tagTypes.profile],
+  providesTags: [tagTypes.profile],
 };
 
 export {
