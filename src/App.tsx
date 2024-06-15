@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom';
 import { useTelegram } from 'hooks';
 import { envs } from 'constants/index';
-import { TextField } from '@mui/material';
 import {
   AddModules,
   AddSchool,
@@ -61,19 +60,15 @@ function App() {
   }, [tg, pathname]);
 
   return (
-    <>
-      <TextField value={tg.initData} />
-
-      <Routes>
-        <Route path="/" element={<Profile />} />
-        <Route path="/addSchool" element={<AddSchool />} />
-        <Route path="/school/:id" element={<Shcool />} />
-        <Route path="/school/:id/addModules" element={<AddModules />} />
-        <Route path="/school/:id/menu" element={<SchoolMenu />} />
-        <Route path="/school/:id/position" element={<ModulesPosition />} />
-        <Route path="/school/:id/edit/:moduleId" element={<EditModule />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Profile />} />
+      <Route path="/addSchool" element={<AddSchool />} />
+      <Route path="/school/:id" element={<Shcool />} />
+      <Route path="/school/:id/addModules" element={<AddModules />} />
+      <Route path="/school/:id/menu" element={<SchoolMenu />} />
+      <Route path="/school/:id/position" element={<ModulesPosition />} />
+      <Route path="/school/:id/edit/:moduleId" element={<EditModule />} />
+    </Routes>
   );
 }
 
