@@ -7,11 +7,16 @@ import {
 import { useGetSchoolsQuery } from 'services/api';
 import PeopleIcon from '@mui/icons-material/People';
 import { Link } from 'react-router-dom';
+import { Loader } from 'components';
 import styles from './styles';
 
 function Schools() {
-  const { data } = useGetSchoolsQuery(undefined);
+  const { data, isLoading } = useGetSchoolsQuery(undefined);
   const schools = data?.schools;
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>

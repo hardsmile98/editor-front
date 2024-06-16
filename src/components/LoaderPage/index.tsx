@@ -1,5 +1,6 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box } from '@mui/material';
 import logo from 'assets/images/logo.svg';
+import Loader from 'components/Loader';
 
 const styles = {
   root: {
@@ -21,7 +22,7 @@ function LoaderPage() {
         alt="Slep"
       />
 
-      <CircularProgress size={32} />
+      <Loader />
 
       <Box fontSize="body2.fontSize" mt={1}>
         Загрузка...
