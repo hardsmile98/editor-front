@@ -1,18 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Paper,
   TextField,
   Typography,
 } from '@mui/material';
-import { useAddSchoolMutation } from 'services/api';
-import { Link } from 'react-router-dom';
+import { isErrorWithMessage, useAddSchoolMutation } from 'services/api';
+import { Link, useNavigate } from 'react-router-dom';
 import CodeIcon from '@mui/icons-material/Code';
 import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { LoadingButton } from '@mui/lab';
+import { useSnackbar } from 'notistack';
 import styles from './styles';
 
 function AddSchool() {
+  const navigate = useNavigate();
+
+  const { enqueueSnackbar } = useSnackbar();
+
   const [newSchoolData, setNewSchoolData] = useState({
     token: '',
     title: '',
@@ -27,7 +32,28 @@ function AddSchool() {
     setNewSchoolData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const [addSchool, { isLoading }] = useAddSchoolMutation();
+  const [addSchool, {
+    isLoading,
+    isError,
+    isSuccess,
+    error,
+  }] = useAddSchoolMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      enqueueSnackbar('Новая школа создана', { variant: 'success' });
+
+      navigate('/');
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      const errorMessage = isErrorWithMessage(error) && error.data.message;
+
+      enqueueSnackbar(errorMessage ?? 'Ошибка при создании новой школы', { variant: 'error' });
+    }
+  }, [isError]);
 
   return (
     <Box sx={styles.root}>

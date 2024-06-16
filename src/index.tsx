@@ -5,6 +5,7 @@ import store from 'store/index';
 import './assets/styles/fonts.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from 'theme';
+import { SnackbarProvider } from 'notistack';
 import App from './App';
 
 const rootElement = document?.getElementById?.('root');
@@ -17,7 +18,14 @@ if (rootElement !== null) {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <App />
+
+          <SnackbarProvider anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          >
+            <App />
+          </SnackbarProvider>
         </ThemeProvider>
       </BrowserRouter>
     </Provider>,
