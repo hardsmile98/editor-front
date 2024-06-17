@@ -23,6 +23,9 @@ export const publicApi = createApi({
     getProfile: builder.query<endpoints.ProfileResponse, undefined>(endpoints.getProfile),
     getSchools: builder.query<endpoints.SchoolsResponse, undefined>(endpoints.getSchools),
     addSchool: builder.mutation(endpoints.addSchool),
+    getModules: builder.query<endpoints.GetModulesResponse, undefined>(endpoints.getModules),
+    getModulesSelected: builder
+      .query<endpoints.GetModulesSelectedResponse, { uuid: string }>(endpoints.getModulesSelected),
   }),
 
   tagTypes: Object.values(tagTypes),
@@ -32,6 +35,8 @@ export const {
   useGetProfileQuery,
   useGetSchoolsQuery,
   useAddSchoolMutation,
+  useGetModulesQuery,
+  useGetModulesSelectedQuery,
 } = publicApi;
 
 export function isErrorWithMessage(

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Box,
   List,
@@ -7,30 +8,59 @@ import {
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import HelpIcon from '@mui/icons-material/HelpOutline';
+import { useGetModulesQuery, useGetModulesSelectedQuery } from 'services/api';
+import { ErrorPage, LoaderPage } from 'components';
+import { useParams } from 'react-router';
 import styles from './styles';
 
-const modules = [
-  {
-    id: 1,
-    title: 'Баннер',
-    hint: 'Главная картинка на первой страницы вашей школы',
-    selected: true,
-  },
-  {
-    id: 2,
-    title: 'Модули',
-    hint: 'Добавление модулей и уроков',
-    selected: false,
-  },
-  {
-    id: 3,
-    title: 'Статистика ученика',
-    hint: 'Отображения прогресса у каждого ученика',
-    selected: false,
-  },
-];
+type Module = {
+  id: number
+  title: string
+  hint: string
+  selected: boolean
+};
 
 function AddModules() {
+  const { id: schoolUuid = '' } = useParams();
+
+  const [modules, setModules] = useState<Array<Module>>([]);
+
+  const {
+    data: allModulesData,
+    isLoading: isGetModulesLoading,
+    isError: isGetModulesError,
+  } = useGetModulesQuery(undefined);
+
+  const {
+    data: modulesSelectedData,
+    isLoading: isGetModulesSelectedLoading,
+    isError: isGetModulesSelectedError,
+  } = useGetModulesSelectedQuery({ uuid: schoolUuid });
+
+  const allModules = allModulesData?.modules;
+
+  useEffect(() => {
+    if (allModules && modulesSelectedData) {
+      const moduleSelectedIds = modulesSelectedData.schoolModules?.map?.((el) => el.moduleId);
+
+      setModules(allModules.map((el) => ({
+        ...el,
+        selected: moduleSelectedIds?.includes(el.id),
+      })));
+    }
+  }, [allModules, modulesSelectedData]);
+
+  const isLoading = isGetModulesLoading || isGetModulesSelectedLoading;
+  const isError = isGetModulesError || isGetModulesSelectedError;
+
+  if (isLoading) {
+    return <LoaderPage />;
+  }
+
+  if (isError) {
+    return <ErrorPage />;
+  }
+
   return (
     <List sx={styles.root}>
       {modules.map((module) => (

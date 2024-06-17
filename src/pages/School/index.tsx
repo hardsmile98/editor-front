@@ -6,44 +6,45 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { setLS, getLS } from 'helpers/index';
 import MenuIcon from '@mui/icons-material/Menu';
 import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import AddIcon from '@mui/icons-material/Add';
+import { useGetModulesSelectedQuery } from 'services/api';
+import { ErrorPage, LoaderPage } from 'components';
 import styles from './styles';
 
 const TOOLTIP_LS_KEY = 'tooltip_add_modules';
 
-const modules = [
-  {
-    id: 1,
-    title: 'Баннер',
-  },
-  {
-    id: 2,
-    title: 'Модули',
-  },
-  {
-    id: 3,
-    title: 'Статистика ученика',
-  },
-];
-
 function School() {
+  const { id: schoolUuid = '' } = useParams();
+
   const isTooltipVisible = !getLS(TOOLTIP_LS_KEY);
 
   const addModules = () => setLS(TOOLTIP_LS_KEY, '1');
 
+  const { data, isLoading, isError } = useGetModulesSelectedQuery({ uuid: schoolUuid });
+
+  const modules = data?.schoolModules;
+
+  if (isLoading) {
+    return <LoaderPage />;
+  }
+
+  if (isError) {
+    return <ErrorPage />;
+  }
+
   return (
     <Box sx={styles.root}>
       <List sx={styles.modules}>
-        {modules.map((module) => (
+        {modules?.map((module) => (
           <ListItem
             component={Link}
-            to={`edit/${module.id}`}
+            to={`edit/${module.moduleId}`}
             sx={styles.module}
-            key={module.id}
+            key={module.module.slug}
           >
             <Box sx={styles.moduleWrapper}>
               <Box sx={styles.moduleIcon}>
@@ -51,7 +52,7 @@ function School() {
               </Box>
 
               <Typography>
-                {module.title}
+                {module.module.title}
               </Typography>
             </Box>
 
