@@ -13,7 +13,7 @@ import { ErrorPage, LoaderPage } from 'components';
 import styles from './styles';
 
 type Module = {
-  id: number
+  moduleId: number
   index: number
   title: string
 };
@@ -34,7 +34,7 @@ function ModulesPosition() {
   useEffect(() => {
     if (schoolModules) {
       setModules(schoolModules.map((module) => ({
-        id: module.moduleId,
+        moduleId: module.moduleId,
         index: module.index,
         title: module.module.title,
       })));
@@ -42,7 +42,7 @@ function ModulesPosition() {
   }, [schoolModules]);
 
   const deleteModule = (id: number) => {
-    setModules((prev) => prev.filter((module) => module.id !== id));
+    setModules((prev) => prev.filter((module) => module.moduleId !== id));
   };
 
   const upModule = (index: number) => {
@@ -79,49 +79,56 @@ function ModulesPosition() {
     <Box sx={styles.root}>
       <Box sx={styles.wrapper}>
         <Typography gutterBottom>
-          Расположение добавленных блоков
+          Расположение добавленных модулей
         </Typography>
 
-        <List sx={styles.modules}>
-          {modules?.map((module, index) => (
-            <ListItem sx={styles.module} key={module.id}>
-              <Box sx={styles.moduleWrapper}>
-                <Box sx={styles.moduleIcon}>
-                  <AddIcon />
+        {modules.length ? (
+          <List sx={styles.modules}>
+            {modules?.map((module, index) => (
+              <ListItem sx={styles.module} key={module.moduleId}>
+                <Box sx={styles.moduleWrapper}>
+                  <Box sx={styles.moduleIcon}>
+                    <AddIcon />
+                  </Box>
+
+                  <Typography sx={styles.moduleTitle}>
+                    {module.title}
+                  </Typography>
                 </Box>
 
-                <Typography sx={styles.moduleTitle}>
-                  {module.title}
-                </Typography>
-              </Box>
+                <Box sx={styles.buttons}>
+                  <IconButton
+                    sx={styles.button}
+                    disabled={index === modules.length - 1}
+                    onClick={() => downModule(index)}
+                  >
+                    <DownIcon />
+                  </IconButton>
 
-              <Box sx={styles.buttons}>
-                <IconButton
-                  sx={styles.button}
-                  disabled={index === modules.length - 1}
-                  onClick={() => downModule(index)}
-                >
-                  <DownIcon />
-                </IconButton>
+                  <IconButton
+                    disabled={index === 0}
+                    sx={styles.button}
+                    onClick={() => upModule(index)}
+                  >
+                    <UpIcon />
+                  </IconButton>
 
-                <IconButton
-                  disabled={index === 0}
-                  sx={styles.button}
-                  onClick={() => upModule(index)}
-                >
-                  <UpIcon />
-                </IconButton>
+                  <IconButton
+                    onClick={() => deleteModule(module.moduleId)}
+                    sx={{ ...styles.button, ...styles.delete }}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+                </Box>
+              </ListItem>
+            ))}
+          </List>
+        ) : (
+          <Typography color="text.secondary">
+            У вас нет добавленных модулей
+          </Typography>
+        )}
 
-                <IconButton
-                  onClick={() => deleteModule(module.id)}
-                  sx={{ ...styles.button, ...styles.delete }}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </Box>
-            </ListItem>
-          ))}
-        </List>
       </Box>
 
       <Box sx={styles.navigation}>
