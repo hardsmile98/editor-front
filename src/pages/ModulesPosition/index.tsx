@@ -7,32 +7,39 @@ import UpIcon from '@mui/icons-material/North';
 import DownIcon from '@mui/icons-material/South';
 import CloseIcon from '@mui/icons-material/Close';
 import { LoadingButton } from '@mui/lab';
+import { useGetModulesSelectedQuery } from 'services/api';
+import { useParams } from 'react-router';
+import { ErrorPage, LoaderPage } from 'components';
 import styles from './styles';
 
-const modulesData = [
-  {
-    id: 1,
-    index: 0,
-    title: 'Баннер',
-  },
-  {
-    id: 2,
-    index: 1,
-    title: 'Модули',
-  },
-  {
-    id: 3,
-    index: 2,
-    title: 'Статистика ученика',
-  },
-];
+type Module = {
+  id: number
+  index: number
+  title: string
+};
 
 function ModulesPosition() {
-  const [modules, setModules] = useState<typeof modulesData>([]);
+  const { id: schoolUuid = '' } = useParams();
+
+  const [modules, setModules] = useState<Array<Module>>([]);
+
+  const {
+    data: modulesData,
+    isLoading,
+    isError,
+  } = useGetModulesSelectedQuery({ uuid: schoolUuid });
+
+  const schoolModules = modulesData?.schoolModules;
 
   useEffect(() => {
-    setModules(modulesData);
-  }, [modulesData]);
+    if (schoolModules) {
+      setModules(schoolModules.map((module) => ({
+        id: module.moduleId,
+        index: module.index,
+        title: module.module.title,
+      })));
+    }
+  }, [schoolModules]);
 
   const deleteModule = (id: number) => {
     setModules((prev) => prev.filter((module) => module.id !== id));
@@ -60,6 +67,14 @@ function ModulesPosition() {
     });
   };
 
+  if (isLoading) {
+    return <LoaderPage />;
+  }
+
+  if (isError) {
+    return <ErrorPage />;
+  }
+
   return (
     <Box sx={styles.root}>
       <Box sx={styles.wrapper}>
@@ -68,7 +83,7 @@ function ModulesPosition() {
         </Typography>
 
         <List sx={styles.modules}>
-          {modules.map((module, index) => (
+          {modules?.map((module, index) => (
             <ListItem sx={styles.module} key={module.id}>
               <Box sx={styles.moduleWrapper}>
                 <Box sx={styles.moduleIcon}>
