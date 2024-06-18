@@ -5,7 +5,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { isErrorWithMessage, useAddSchoolMutation } from 'services/api';
+import { getErrorMessage, useAddSchoolMutation } from 'services/api';
 import { Link, useNavigate } from 'react-router-dom';
 import CodeIcon from '@mui/icons-material/Code';
 import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -49,7 +49,7 @@ function AddSchool() {
 
   useEffect(() => {
     if (isError) {
-      const errorMessage = isErrorWithMessage(error) && error.data.message;
+      const errorMessage = getErrorMessage(error);
 
       enqueueSnackbar(errorMessage ?? 'Ошибка при создании новой школы', { variant: 'error' });
     }

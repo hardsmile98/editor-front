@@ -7,7 +7,11 @@ import UpIcon from '@mui/icons-material/North';
 import DownIcon from '@mui/icons-material/South';
 import CloseIcon from '@mui/icons-material/Close';
 import { LoadingButton } from '@mui/lab';
-import { isErrorWithMessage, useEditPositionModulesMutation, useGetModulesSelectedQuery } from 'services/api';
+import {
+  getErrorMessage,
+  useEditPositionModulesMutation,
+  useGetModulesSelectedQuery,
+} from 'services/api';
 import { useNavigate, useParams } from 'react-router';
 import { ErrorPage, LoaderPage } from 'components';
 import { enqueueSnackbar } from 'notistack';
@@ -49,7 +53,7 @@ function ModulesPosition() {
 
   useEffect(() => {
     if (isEditError) {
-      const errorMessage = isErrorWithMessage(error) && error.data.message;
+      const errorMessage = getErrorMessage(error);
 
       enqueueSnackbar(errorMessage ?? 'Ошибка при сохранении изменений', { variant: 'error' });
     }
@@ -57,9 +61,9 @@ function ModulesPosition() {
 
   const edit = () => editPosition({
     schoolUuid,
-    editedModules: modules.map((el) => ({
+    editedModules: modules.map((el, index) => ({
       moduleId: el.moduleId,
-      index: el.index,
+      index,
     })),
   });
 

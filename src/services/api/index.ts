@@ -45,12 +45,20 @@ export const {
 
 export function isErrorWithMessage(
   error: unknown,
-): error is { data: { message: string } } {
+): error is { data: { message: Array<string> | string } } {
   return (
     typeof error === 'object'
     && error != null
-    && typeof (error as any).data?.message === 'string'
+    && (typeof (error as any).data?.message === 'string' || Array.isArray((error as any).data?.message))
+
   );
+}
+
+export function getErrorMessage(error: unknown): string {
+  const errorMessage = (isErrorWithMessage(error)
+    && ((typeof error.data.message === 'string' && error.data.message)
+    || (Array.isArray(error.data.message) && error.data.message.join('')))) || '';
+  return errorMessage;
 }
 
 export * from './endpoints';

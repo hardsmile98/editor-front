@@ -10,7 +10,7 @@ interface EditPositionModulesDto {
 
 const editPositionModules = {
   query: (dto: EditPositionModulesDto) => ({
-    url: '/api/modules/addModule',
+    url: '/api/modules/editPosition',
     method: 'POST',
     body: dto,
   }),
