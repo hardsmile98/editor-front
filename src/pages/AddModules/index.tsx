@@ -2,14 +2,18 @@ import { useEffect, useState } from 'react';
 import {
   Box,
   List,
-  ListItem,
+  ListItemButton,
   Tooltip,
   Typography,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import HelpIcon from '@mui/icons-material/HelpOutline';
-import { useGetModulesQuery, useGetModulesSelectedQuery } from 'services/api';
-import { ErrorPage, LoaderPage } from 'components';
+import {
+  useAddModuleMutation,
+  useGetModulesQuery,
+  useGetModulesSelectedQuery,
+} from 'services/api';
+import { ErrorPage, Loader, LoaderPage } from 'components';
 import { useParams } from 'react-router';
 import styles from './styles';
 
@@ -36,6 +40,8 @@ function AddModules() {
     isLoading: isGetModulesSelectedLoading,
     isError: isGetModulesSelectedError,
   } = useGetModulesSelectedQuery({ uuid: schoolUuid });
+
+  const [addModule, { isLoading: isAddModuleLoading }] = useAddModuleMutation();
 
   const allModules = allModulesData?.modules;
 
@@ -64,14 +70,22 @@ function AddModules() {
   return (
     <List sx={styles.root}>
       {modules.map((module) => (
-        <ListItem sx={styles.module} key={module.id}>
+        <ListItemButton
+          disabled={module.selected}
+          onClick={() => addModule({
+            moduleId: module.id,
+            schoolUuid,
+          })}
+          sx={styles.module}
+          key={module.id}
+        >
           <Box sx={styles.wrapper}>
             <Box sx={{
               ...styles.addIcon,
               ...(module.selected && styles.iconSelected),
             }}
             >
-              <AddIcon />
+              {isAddModuleLoading ? <Loader size={18} /> : <AddIcon />}
             </Box>
 
             <Typography>
@@ -84,7 +98,7 @@ function AddModules() {
               <HelpIcon sx={styles.helpIcon} />
             </Tooltip>
           )}
-        </ListItem>
+        </ListItemButton>
       ))}
     </List>
   );

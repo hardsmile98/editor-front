@@ -146,6 +146,27 @@ const theme = createTheme({
       },
     },
 
+    MuiListItemButton: {
+      defaultProps: {
+        disableRipple: true,
+      },
+
+      styleOverrides: {
+        root: {
+          backgroundColor: colors.bgPaper,
+          borderRadius: 12,
+
+          '&.Mui-disabled': {
+            opacity: 1,
+          },
+
+          ':hover': {
+            backgroundColor: colors.bgPaper,
+          },
+        },
+      },
+    },
+
     MuiMenuItem: {
       defaultProps: {
         disableRipple: true,

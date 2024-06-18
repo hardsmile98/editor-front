@@ -7,9 +7,10 @@ import UpIcon from '@mui/icons-material/North';
 import DownIcon from '@mui/icons-material/South';
 import CloseIcon from '@mui/icons-material/Close';
 import { LoadingButton } from '@mui/lab';
-import { useGetModulesSelectedQuery } from 'services/api';
-import { useParams } from 'react-router';
+import { isErrorWithMessage, useEditPositionModulesMutation, useGetModulesSelectedQuery } from 'services/api';
+import { useNavigate, useParams } from 'react-router';
 import { ErrorPage, LoaderPage } from 'components';
+import { enqueueSnackbar } from 'notistack';
 import styles from './styles';
 
 type Module = {
@@ -21,6 +22,8 @@ type Module = {
 function ModulesPosition() {
   const { id: schoolUuid = '' } = useParams();
 
+  const navigate = useNavigate();
+
   const [modules, setModules] = useState<Array<Module>>([]);
 
   const {
@@ -28,6 +31,37 @@ function ModulesPosition() {
     isLoading,
     isError,
   } = useGetModulesSelectedQuery({ uuid: schoolUuid });
+
+  const [editPosition, {
+    isLoading: isEditing,
+    isSuccess: isEdited,
+    isError: isEditError,
+    error,
+  }] = useEditPositionModulesMutation();
+
+  useEffect(() => {
+    if (isEdited) {
+      enqueueSnackbar('Изменения успешно сохранены', { variant: 'success' });
+
+      navigate(`/school/${schoolUuid}`);
+    }
+  }, [isEdited]);
+
+  useEffect(() => {
+    if (isEditError) {
+      const errorMessage = isErrorWithMessage(error) && error.data.message;
+
+      enqueueSnackbar(errorMessage ?? 'Ошибка при сохранении изменений', { variant: 'error' });
+    }
+  }, [isEditError]);
+
+  const edit = () => editPosition({
+    schoolUuid,
+    editedModules: modules.map((el) => ({
+      moduleId: el.moduleId,
+      index: el.index,
+    })),
+  });
 
   const schoolModules = modulesData?.schoolModules;
 
@@ -132,7 +166,11 @@ function ModulesPosition() {
       </Box>
 
       <Box sx={styles.navigation}>
-        <LoadingButton variant="contained">
+        <LoadingButton
+          onClick={edit}
+          loading={isEditing}
+          variant="contained"
+        >
           Сохранить
         </LoadingButton>
       </Box>

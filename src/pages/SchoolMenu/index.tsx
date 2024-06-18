@@ -28,6 +28,7 @@ function SchoolMenu() {
       <MenuList sx={styles.pages}>
         {pages.map((page) => (
           <MenuItem
+            key={page.id}
             component={Link}
             to={`/school/${id}/position`}
             sx={styles.page}

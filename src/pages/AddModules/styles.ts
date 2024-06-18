@@ -2,7 +2,7 @@ const styles = {
   root: {
     p: 3,
 
-    '> li:not(:last-of-type)': {
+    '> div:not(:last-of-type)': {
       mb: 1,
     },
   },

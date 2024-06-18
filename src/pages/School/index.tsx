@@ -20,13 +20,13 @@ const TOOLTIP_LS_KEY = 'tooltip_add_modules';
 function School() {
   const { id: schoolUuid = '' } = useParams();
 
-  const isTooltipVisible = !getLS(TOOLTIP_LS_KEY);
-
   const addModules = () => setLS(TOOLTIP_LS_KEY, '1');
 
   const { data, isLoading, isError } = useGetModulesSelectedQuery({ uuid: schoolUuid });
 
   const modules = data?.schoolModules;
+
+  const isTooltipVisible = !getLS(TOOLTIP_LS_KEY) && modules?.length === 0;
 
   if (isLoading) {
     return <LoaderPage />;
