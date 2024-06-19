@@ -71,7 +71,7 @@ function AddModules() {
     <List sx={styles.root}>
       {modules.map((module) => (
         <ListItemButton
-          disabled={module.selected}
+          disabled={module.selected || isAddModuleLoading}
           onClick={() => addModule({
             moduleId: module.id,
             schoolUuid,
