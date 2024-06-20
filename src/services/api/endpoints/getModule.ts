@@ -8,10 +8,15 @@ interface GetModuleResponse {
     type: string
     schoolUuid: string
     moduleId: number
-    settings: unknown
+    settings: {
+      properties: Record<string, Record<string, string | number>>
+      visibleProperties: Array<string>
+    }
     parentId: number
   }
 }
+
+type Settings = GetModuleResponse['module']['settings'];
 
 const getModule = {
   query: ({ uuid, moduleId }: { uuid: string, moduleId: string }) => ({
@@ -28,4 +33,5 @@ const getModule = {
 export {
   getModule,
   type GetModuleResponse,
+  type Settings,
 };
