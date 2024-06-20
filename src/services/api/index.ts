@@ -28,6 +28,8 @@ export const publicApi = createApi({
       .query<endpoints.GetModulesSelectedResponse, { uuid: string }>(endpoints.getModulesSelected),
     addModule: builder.mutation(endpoints.addModule),
     editPositionModules: builder.mutation(endpoints.editPositionModules),
+    getModule: builder
+      .query<endpoints.GetModuleResponse, { uuid: string, moduleId: string }>(endpoints.getModule),
   }),
 
   tagTypes: Object.values(tagTypes),
@@ -41,6 +43,7 @@ export const {
   useGetModulesSelectedQuery,
   useAddModuleMutation,
   useEditPositionModulesMutation,
+  useGetModuleQuery,
 } = publicApi;
 
 export function isErrorWithMessage(
