@@ -19,18 +19,22 @@ function Editor({
     return null;
   }
 
-  return visibleProperties.map((prop) => (
-    <Paper
-      key={prop}
-      sx={{ mb: 1, p: 2 }}
-    >
-      <Property
-        name={prop}
-        value={properties[prop]}
-        setProperties={setProperties}
-      />
-    </Paper>
-  ));
+  return (
+    <div>
+      {visibleProperties.map((prop) => (
+        <Paper
+          key={prop}
+          sx={{ mb: 1, p: 2 }}
+        >
+          <Property
+            name={prop}
+            value={properties[prop]}
+            setProperties={setProperties}
+          />
+        </Paper>
+      ))}
+    </div>
+  );
 }
 
 export default memo(Editor);
