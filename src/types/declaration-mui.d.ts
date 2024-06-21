@@ -5,6 +5,7 @@ import type {
 declare module '@mui/material/styles/createPalette' {
   interface TypeBackground extends MuiTypeBackground {
     secondary: string
+    grey: string
   }
 }
 

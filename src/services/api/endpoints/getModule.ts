@@ -9,7 +9,7 @@ interface GetModuleResponse {
     schoolUuid: string
     moduleId: number
     settings: {
-      properties: Record<string, Record<string, string | number>>
+      properties: Record<string, Record<string, string | number | boolean>>
       visibleProperties: Array<string>
     }
     parentId: number

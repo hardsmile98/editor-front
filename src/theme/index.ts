@@ -4,6 +4,7 @@ const colors = {
   bgPaper: '#262626',
   bgDefault: '#000000',
   bgSecondary: '#121213',
+  bgGrey: '#707579',
   primaryMain: '#2990FF',
 };
 
@@ -199,6 +200,7 @@ const theme = createTheme({
       paper: colors.bgPaper,
       default: colors.bgDefault,
       secondary: colors.bgSecondary,
+      grey: colors.bgGrey,
     },
 
     primary: {

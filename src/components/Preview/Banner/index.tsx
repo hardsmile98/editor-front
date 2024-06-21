@@ -28,17 +28,19 @@ function Banner({ properties }: BannerProps) {
   const title = properties.title?.value;
 
   const sx = {
+    borderRadius: `${Number(properties?.borderRadius?.value)}px`,
     backgroundColor: String(properties?.backgroundColor?.value),
     borderStyle: 'solid',
     borderColor: String(properties?.border?.value),
     borderWidth: Number(properties?.border?.width),
     marginTop: `${Number(properties?.margin?.topValue)}px`,
     marginBottom: `${Number(properties?.margin?.bottomValue)}px`,
-    backgroundImage: properties?.image?.value && `url(${properties?.image?.value})`,
+    backgroundImage: properties?.image?.value ? `url(${String(properties?.image?.value)})` : 'none',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     pb: properties?.ratio?.value ? '55%' : '100%',
+    color: String(properties?.color?.value),
   };
 
   const sxTitle = {
