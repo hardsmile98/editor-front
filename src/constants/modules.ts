@@ -11,7 +11,6 @@ enum PropertyTypes {
   FILE = 'file',
   COLOR = 'color',
   BORDER = 'border',
-  MARGIN = 'margin',
 }
 
 export {
