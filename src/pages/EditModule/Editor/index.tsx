@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Paper } from '@mui/material';
 import { Settings } from 'services/api';
+import { ErrorPage } from 'components';
 import Property from './Property';
 
 type EditorProps = {
@@ -16,7 +17,7 @@ function Editor({
   visibleProperties,
 }: EditorProps) {
   if (!properties || !visibleProperties) {
-    return null;
+    return <ErrorPage />;
   }
 
   return visibleProperties.map((prop) => (
